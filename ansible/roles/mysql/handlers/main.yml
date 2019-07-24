@@ -1,0 +1,4 @@
+- name: Reiniciando MySQL
+  service: mysql
+    name: mysql
+    state: restarted

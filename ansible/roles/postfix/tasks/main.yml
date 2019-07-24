@@ -1,0 +1,43 @@
+- name: Instalación de Postfix
+  apt:
+   name: postfix
+   state: present
+
+- name: Instalación de dovecot-imapd
+  apt: 
+   name: dovecot-imapd 
+   state: present
+
+- name: Agregando registro CNAME al DNS
+  template: >
+    src=db.example
+    dest=/var/cache/bind/db.example
+    owner=root
+    group=root
+    mode=644
+
+- name: Configurando postfix
+  template: >
+    src=main.cf
+    dest=/etc/postfix/main.cf
+    owner=root
+    group=root
+    mode=644
+
+- name: Configurando fichero 10-auth
+  template: >
+    src=10-auth.conf
+    dest=/etc/dovecot/conf.d/10-auth.conf
+    owner=root
+    group=root
+    mode=644
+
+- name: Configurando fichero 10-mail
+  template: >
+    src=10-mail.conf
+    dest=/etc/dovecot/conf.d/10-mail.conf
+    owner=root
+    group=root 
+    mode=644
+  notify: Reiniciando dovecot
+

@@ -1,0 +1,4 @@
+- name: Reiniciar DHCP
+  service:
+    name: isc-dhcp-server
+    state: restarted

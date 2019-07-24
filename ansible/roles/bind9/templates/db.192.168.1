@@ -1,0 +1,12 @@
+$TTL    86400
+@       IN      SOA     {{ ansible_hostname }}.{{ hostname }} {{ mail }} (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+
+{{ hostname }}      IN      NS      {{ ansible_hostname }}.{{ hostname }}
+
+$ORIGIN {{ zonarev }}.
+{{ ansible_enp0s3["ipv4"]["address"].split(".")[3] }}       IN      PTR     {{ ansible_hostname }}.{{ hostname }}

@@ -1,0 +1,12 @@
+- name: Definiendo contraseña
+  debconf: name='mysql-server' question='mysql-server/root_password' value='{{mysql_root_password | quote}}' vtype='password'
+
+- name: Confirmación de contraseña
+  debconf: name='mysql-server' question='mysql-server/root_password_again' value='{{mysql_root_password | quote}}' vtype='password'
+
+- name: Instalando MySQL Server/Client
+  apt: name={{item}} state=installed
+  with_items:
+       - mysql-server
+       - mysql-client
+  notify: Reiniciando MySQL

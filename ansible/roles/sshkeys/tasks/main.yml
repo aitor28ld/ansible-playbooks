@@ -1,0 +1,10 @@
+---
+- name: Make .ssh directory
+  file:
+    path: "/home/{{ username }}/.ssh"
+    state: directory
+- name: Create authorized_key file
+  authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ lookup('file','/home/{{ username }}/.ssh/id_rsa.pub') }}"

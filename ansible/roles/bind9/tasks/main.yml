@@ -1,0 +1,40 @@
+- name: Instalación del servidor Bind9
+  apt:
+   name: bind9
+   state: present
+
+- name: Copiando configuración local
+  template: > 
+    src=named.conf.local 
+    dest=/etc/bind/named.conf.local
+    owner=root
+    group=root
+    mode=0644
+
+- name: Copiando resolución directa
+  template: >
+    src=db.example
+    dest=/var/cache/bind/db.example
+    owner=root
+    group=root
+    mode=0644
+
+- name: Copiando resolución inversa
+  template: >
+    src=db.192.168.1 
+    dest=/var/cache/bind/db.192.168.1
+    owner=root
+    group=root
+    mode=0644
+
+- name: Copiando resolv.conf
+  template: > 
+    src=resolv.conf
+    dest=/etc/resolv.conf
+    owner=root
+    group=root
+    mode=0644
+
+- name: Reiniciando DNS con handler
+  command: /bin/true
+  notify: Reinicio de Bind9

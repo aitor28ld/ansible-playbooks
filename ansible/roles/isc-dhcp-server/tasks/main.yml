@@ -1,0 +1,22 @@
+- name: Instalación de ISC-DHCP-SERVER
+  apt:
+    name: isc-dhcp-server
+    state: present
+
+- name: Copiando configuración predeterminada
+  template: >
+    src=isc-dhcp-server
+    dest=/etc/default/isc-dhcp-server
+    owner=root 
+    group=root
+    mode=644
+
+- name: Copiando configuración general
+  template: >
+    src=dhcpd.conf
+    dest=/etc/dhcp/dhcpd.conf
+    owner=root
+    group=root
+    mode=644
+  notify: Reiniciar DHCP
+

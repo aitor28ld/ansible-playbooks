@@ -1,0 +1,12 @@
+
+hostname: example.com.
+mail: mail.example.com.
+zona: example.com
+ficherodir: db.example
+ipdir: 192.168.1.0/24
+
+zonarev: 1.168.192.in-addr.arpa
+ficherorev: db.192.168.1
+
+
+

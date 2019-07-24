@@ -1,0 +1,4 @@
+directorioweb: squid-reports
+servidor: 10.0.0.1
+ipdelproxy: 10.0.0.1
+dominio: localhost

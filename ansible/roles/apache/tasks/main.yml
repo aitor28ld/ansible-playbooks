@@ -1,0 +1,15 @@
+- name: Instalación del Servidor Web Apache2 (Con php5 y curl)
+  apt: name={{item}} state=installed
+  with_items:
+       - apache2
+       - php5
+       - php5-curl
+
+- name: Habilitando modulos de apache2
+  action: command a2enmod rewrite
+  notify: Reiniciar Apache2
+
+- name: Habilitando el modulo usermod de Apache2
+  action: command a2enmod usermod
+  notify: Reiniciar Apache2
+

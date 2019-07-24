@@ -1,0 +1,17 @@
+---
+- hosts: default
+  user: usuario
+  become: True
+  vars:
+    username: "usuario"
+  roles:
+    - sshkeys
+    - updates
+    - apache
+    - bind9
+    - isc-dhcp-server
+    - mysql
+    - postfix
+    - squid
+    - haproxy
+    - mariadb

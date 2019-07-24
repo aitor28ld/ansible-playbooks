@@ -1,0 +1,22 @@
+- name: Instalación de HAProxy
+  apt:
+   name: haproxy
+   state: present
+
+- name: Copiando configuración haproxy
+  template: >
+    src=haproxy.cfg
+    dest=/etc/haproxy/haproxy.cfg
+    owner=root
+    group=root
+    mode=0644
+
+- name: Habilitando haproxy
+  template: >
+    src=haproxy 
+    dest=/etc/default/haproxy
+    owner=root
+    group=root
+    mode=0644
+    notify: Reiniciando HAProxy
+

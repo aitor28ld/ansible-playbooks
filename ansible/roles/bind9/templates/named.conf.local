@@ -1,0 +1,14 @@
+zone "{{ zona }}" {
+ #Tipo de servidor,en nuestro caso el maestro
+ type master;
+ #El archivo que contiene la configuración de resolución directa
+ file "{{ ficherodir }}";
+ allow-query { {{ ipdir }};};
+};
+
+zone " {{ zonarev }} " {
+ type master;
+ #El archivo que contiene la configuración de resolución inversa
+ file " {{ ficherorev }} ";
+ allow-query { {{ ipdir }};};
+};

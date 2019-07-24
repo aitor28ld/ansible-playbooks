@@ -1,0 +1,14 @@
+nombrebal: example
+ip: 192.168.1.1
+puerto: 80
+
+usuario: admin
+contraseña: admin
+
+nombreserv1: servidor1
+ipserv1: 10.0.0.1
+puertoserv1: 80
+
+nombreserv2: servidor2
+ipserv2: 10.0.0.2
+puertoserv2: 80
